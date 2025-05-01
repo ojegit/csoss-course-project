@@ -9,9 +9,15 @@ The code for training a neural network for the purpose of intrusion detection in
 Note that we've only used a small proportion of the CIC-IDS 2018 [\[1\]](#ref1) dataset, namely 
 ```Friday-02-03-2018_TrafficForML_CICFlowMeter.csv``` for training the model in order to demonstrate how such intrusion detector might work. The whole dataset is about ~7Gb and requires hours of training time even with Colab.
 
-Outputs extracted for offline including the neural network model file for [Keras](https://keras.io/), feature standardizer for [scikit-learn](https://scikit-learn.org) and test data can be found at [CIC_IDS2018](./CIC_IDS2018/). 
+In short, the model training terminates early before the assigned 25 epochs as validation loss no longer improves. The classification accuracy on test data is very impressive ~99.9%. The confusion matrix is as follows:
+| Accuracy vs epoch | Confusion matrix |
+|--|--|
+| ![accuracy_vs_epoch](./CIC_IDS2018/accuracy_vs_epoch.png) | ![confusion_matrix](./CIC_IDS2018/confusion_matrix.png) |
+
+Outputs extracted including the neural network model file for [Keras](https://keras.io/), feature standardizer for [scikit-learn](https://scikit-learn.org) and test data can be found at [CIC_IDS2018](./CIC_IDS2018/). 
 
 Two formats are offered for Keras model ```.h5``` and ```.keras```, however the latter is used in the codes. The ```.pkl``` file is used for the feature standardizer and ```Xy_test.zip``` houses the test data (20% of the full data).
+
 
 ### CLI tool
 The tool ```cd_v1.py``` can be used for demostrating how network traffic is captured and categorized as well as testing individual packet data files and flow files for categorization. 
