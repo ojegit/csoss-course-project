@@ -62,5 +62,13 @@ Example 3: *predict labels for X_test.csv flow file from the CIC_IDS2018 dataset
 py -3.12 -m cd --test-input "[path to]/X_test.csv"
 ```
 
+### Conclusion
+By combining machine learning with realistic flow-level network traffic, this project delivers a full pipeline—from training to real-world inference—for a basic IDS. The neural network achieves high accuracy on test data, and the CLI tool offers a practical interface for deploying the model on live or recorded traffic.
+
+Future work could extend this system with:
+- Multi-class classification to detect specific attack types
+- Use of more days/files from the full dataset for generalization
+- Integration with real-time dashboards or alerting systems
+
 ### References 
 <a name="ref1">[1]</a>: https://www.unb.ca/cic/datasets/ids-2018.html<br/>
