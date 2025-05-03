@@ -20,17 +20,27 @@ import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-### CONSTANTS
+### CONSTANTS 
 
+#path to keras model, extension .keras
 model_path = None #path to model e.g ./CIC_IDS2018/cic_ids2018_friday.keras
+
+#path to sciki-learn scaler, extension .pkl
 scaler_path = None #path to scaler e.g ./CIC_IDS2018/scaler.pkl
+
+#path to dumpcap.exe
 dumpcap_exe = None #path to dumpcap.exe
+
+#working directory of the cfm.bat file 
 cfm_bat_cwd = None #CICFLowMeter-4.0 cfm.mat working folder i.e CICFlowMeter-4.0\bin
-dropped_pcap_columns = ['Src Port', 'Src IP', 'Dst IP', 'Timestamp', 'Label', 'Flow ID', 'Flow Byts/s', 'Flow Pkts/s']
+
+#columns that are dropped from the flow (.csv) file
+drop_flow_columns = ['Src Port', 'Src IP', 'Dst IP', 'Timestamp', 'Label', 'Flow ID', 'Flow Byts/s', 'Flow Pkts/s']
 
 
 ### FUNCTIONS
 
+#parsing the duration CLI input
 def parse_duration(duration_str):
     """Parses a duration string like '10s', '5m', '2h', '1.5d' into seconds."""
     if duration_str is None:
@@ -49,6 +59,7 @@ def parse_duration(duration_str):
             f"Invalid duration format: '{duration_str}'. Use format like 30s, 5m, 2.5h, 1d."
         )
 
+#capturing traffic with dumpcap.exe
 def capture_pcap(interface, duration_sec, filename, verbose=0):
     command = [dumpcap_exe, '-i', interface, '-a', f'duration:{int(duration_sec)}', '-w', filename, '-P']
     result = subprocess.run(command, creationflags=subprocess.CREATE_NO_WINDOW, capture_output=True, text=True)
@@ -56,6 +67,8 @@ def capture_pcap(interface, duration_sec, filename, verbose=0):
         print(result.stdout)
     return filename
 
+
+#convert packet files to flows
 def convert_to_flow(input_filename, drop_columns=None, verbose=0):
     command = ["cfm.bat", input_filename, os.path.dirname(input_filename)]
     result = subprocess.run(command, cwd=cfm_bat_cwd, capture_output=True, text=True, shell=True)
@@ -68,12 +81,17 @@ def convert_to_flow(input_filename, drop_columns=None, verbose=0):
     if verbose > 0:
         print(result.stdout)
 
+#load scikit-learn scaler from file
 def load_scaler():
     return joblib.load(scaler_path)
 
+
+#load keras model from file
 def load_model():
     return tf.keras.models.load_model(model_path)
 
+
+#predict with keras model
 def predict_intrusion_label(model, scaler, input_filename, drop_columns=None, log_name='log_file.log', verbose=0):
     test_data = pd.read_csv(input_filename)
     if drop_columns is not None:
@@ -83,6 +101,7 @@ def predict_intrusion_label(model, scaler, input_filename, drop_columns=None, lo
 
 ### MAIN
 
+# CLI
 def main():
     parser = argparse.ArgumentParser(description="Network Intrusion Detection CLI Tool")
     parser.add_argument('--interval', type=int, default=5, help='Capture interval in seconds')
@@ -177,7 +196,7 @@ def main():
                 print(f"[*] Capturing traffic for {args.interval} secs...")
                 pcap_file = capture_pcap(args.interface, args.interval, os.path.join(args.output_dir, tmp_pcap))
                 print("[*] Converting to flows...")
-                convert_to_flow(pcap_file, drop_columns = dropped_pcap_columns)
+                convert_to_flow(pcap_file, drop_columns = drop_flow_columns)
                 print("[*] Predicting labels...")
                 prediction = predict_intrusion_label(model, scaler, pcap_file + '_Flow.csv')
 

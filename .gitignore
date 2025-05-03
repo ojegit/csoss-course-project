@@ -1,3 +1,6 @@
 .git
+__pycache__
+.ipynb_checkpoints
 *.csv
 Xy_test
+depricated

@@ -3,8 +3,8 @@
 ### Course project description<br/>
 *TBA*
 
-### Neural network training for intrusion detection
-The code for training a neural network for the purpose of intrusion detection in Colab see [notebook](./ccsoss_v1.ipynb). This model only detects binary labels.
+### Training a neural network for intrusion detection
+The code for training a neural network for the purpose of intrusion detection in Colab see [notebook](./colab_train_detector.ipynb). This model only detects binary labels.
 
 Note that we've only used a small proportion of the CIC-IDS 2018 [\[1\]](#ref1) dataset, namely 
 ```Friday-02-03-2018_TrafficForML_CICFlowMeter.csv``` for training the model in order to demonstrate how such intrusion detector might work. The whole dataset is about ~7Gb and requires hours of training time even with Colab.
@@ -20,7 +20,7 @@ Two formats are offered for Keras model ```.h5``` and ```.keras```, however the 
 
 
 ### CLI tool
-The tool ```cd_v1.py``` can be used for demostrating how network traffic is captured and categorized as well as testing individual packet data files and flow files for categorization. 
+The Python file ```cd.py``` contains the command like interface runnable tool that can be used for capturing and categorizing traffic (i.e intrusion detection) as well as categorizing individual packet data and flow files. 
 
 Before operation setting paths to ```dumpcap.exe``` from [Wireshark](https://www.wireshark.org/) and location of ```cfm.bat``` from [CICFlowMeter](https://www.researchgate.net/publication/326991554_CICFlowmeter-V40_formerly_known_as_ISCXFlowMeter_is_a_network_traffic_Bi-flow_generator_and_analyser_for_anomaly_detection_httpsgithubcomISCXCICFlowMeter) is required. 
 
@@ -31,20 +31,20 @@ dumpcap.exe -D
 
 Example 1: *Test everything works (paths set, tools installed etc.)*
 ```
-py -3.12 -m cd_v1 --dry-run
+py -3.12 -m cd --dry-run
 ```
 
 
 Example 2: *Capture traffic at 5 second intervals for 60 seconds*:
 ```
-py -3.12 -m cd_v1 --duration 60s --interval 5 --interface [INTERFACE] --output-dir "./"
+py -3.12 -m cd --duration 60s --interval 5 --interface [INTERFACE] --output-dir "./"
 ```
 
 In addition to capturing a testbed of sorts is also included. The flag ```--test-input``` followed by a flow file extension with ```.csv``` e.g ```X_test.csv``` (from the [test file](./CIC_IDS2018/Xy_test.zip)) results in a lengthy output of some ~200k lines. Should the test file have ```.pcap``` extension it is first converted to a flow file and then predict is run.
 
 Example 3: *predict labels for X_test.csv flow file from the CIC_IDS2018 dataset*:
 ```
-py -3.12 -m cd_v1 --test-input "[path to]/X_test.csv"
+py -3.12 -m cd --test-input "[path to]/X_test.csv"
 ```
 
 ### References 
