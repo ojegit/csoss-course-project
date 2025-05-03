@@ -1,29 +1,31 @@
-## Cyber Security of Software Systems
+## Cyber Security of Software Systems - Course project
 
-### Course project description
-Intrusion Detection Using a Neural Network Trained on the CSE-CIC-IDS2018 Dataset
+### Intrusion Detection Using Neural Networks and Flow-Based Traffic Analysis
 
 In this project, we explore the application of machine learning techniques—specifically a neural network—for detecting malicious activity in network traffic. The goal is to demonstrate how supervised learning can be used to distinguish between normal and intrusive behavior using flow-level network features.
 
-To build and evaluate the model, we utilized a subset of the CSE-CIC-IDS2018 dataset [\[1\]](#ref1), a comprehensive and realistic dataset developed by the Canadian Institute for Cybersecurity (CIC) in collaboration with the Communications Security Establishment (CSE). The dataset simulates a real-world corporate network, complete with servers, employee machines, and attacker systems. It includes a broad range of attack types (e.g., brute-force, DDoS, infiltration, and web-based exploits) and is widely recognized in intrusion detection research for its high-quality labeled data and realistic traffic profiles.
+To build and evaluate the model, we used a subset of the CSE-CIC-IDS2018 dataset [\[1\]], a comprehensive and realistic dataset created by the Canadian Institute for Cybersecurity (CIC) in collaboration with the Communications Security Establishment (CSE). The dataset was generated in a controlled testbed at the University of New Brunswick, simulating an enterprise network environment with:
+- 420 machines representing employees across five departments
+- 30 servers offering services like web, email, FTP, and DNS
+- An attacker infrastructure with 50 machines generating malicious traffic
 
-For this project, we selected the file Friday-02-03-2018_TrafficForML_CICFlowMeter.csv, which represents one day's worth of labeled flow data. While this represents only a small portion of the full dataset (which totals approximately 7 GB), it is sufficient to demonstrate the model's effectiveness.
+The data includes both benign and malicious network activity, covering a wide range of attack types, including:
+- Brute-force attacks (SSH, FTP)
+- Botnet activity
+- Denial-of-Service (DoS) and Distributed DoS (DDoS)
+- Web-based attacks (e.g., XSS, SQL Injection)
+- Heartbleed exploit
+- Internal network infiltration
 
-A binary classifier was trained using Keras in a Google Colab notebook. Despite the reduced scope, the model achieved a strong test accuracy of approximately 99.9%, showing the potential of neural networks for binary intrusion detection tasks. The project outputs include:
-- A trained neural network model (.keras and .h5)
-- A scikit-learn feature standardizer (.pkl)
-- Test data (Xy_test.zip)
-- A command-line interface (CLI) tool (cd.py) for real-time traffic capture and classification using flow-level features
+Network traffic was captured using PCAP files, and over 80 flow-level features were extracted using CICFlowMeter-V3, a tool that computes statistics such as packet size, duration, flow direction, and protocol behavior. Each flow is labeled as benign or as a specific attack type, making the dataset ideal for both binary and multi-class classification.
 
-The CLI tool enables practical testing and demonstration of intrusion detection. It integrates with Wireshark's dumpcap and CICFlowMeter, offering support for both live traffic capture and offline classification of .pcap or .csv flow files.
-
-While this project is limited to binary classification and a subset of the data, it lays the foundation for more advanced systems that could detect a wider range of threats using multi-class classification or anomaly detection.
+While the full dataset used in training the model is approximately 7 GB, for this project we focused on a manageable subset to demonstrate how an intrusion detection system (IDS) might work in practice using machine learning.
 
 ### Part I. Training a neural network
 The code for training a neural network for the purpose of intrusion detection in Colab see [notebook](./colab_train_detector.ipynb). This model only detects binary labels.
 Execution time for the notebook is about ~30 min. 
 
-The classification accuracy on test data is very impressive ~99.9%. The confusion matrix is as follows (note: dur to randomness the results may vary with your execution):
+The classification accuracy on test data is very impressive ~99.9%. The accuracy in terms of epochs and confusion matrix with respect to the test data are as follows (note: due to randomness the results may vary with your execution):
 | Accuracy vs epoch | Confusion matrix |
 |--|--|
 | ![accuracy_vs_epoch](./CIC_IDS2018/accuracy_vs_epoch.png) | ![confusion_matrix](./CIC_IDS2018/confusion_matrix.png) |
