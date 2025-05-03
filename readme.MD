@@ -7,9 +7,9 @@
 The code for training a neural network for the purpose of intrusion detection in Colab see [notebook](./colab_train_detector.ipynb). This model only detects binary labels.
 
 Note that we've only used a small proportion of the CIC-IDS 2018 [\[1\]](#ref1) dataset, namely 
-```Friday-02-03-2018_TrafficForML_CICFlowMeter.csv``` for training the model in order to demonstrate how such intrusion detector might work. The whole dataset is about ~7Gb and requires hours of training time even with Colab.
+```Friday-02-03-2018_TrafficForML_CICFlowMeter.csv``` for training the model in order to demonstrate how such intrusion detector might work. Execution time for the notebook is about ~30 min. The whole dataset is about ~7Gb and would require hours of training time even with Colab.
 
-In short, the model training terminates early before the assigned 25 epochs as validation loss no longer improves. The classification accuracy on test data is very impressive ~99.9%. The confusion matrix is as follows:
+In short, the classification accuracy on test data is very impressive ~99.9%. The confusion matrix is as follows (note: doe to randomness the results may vary with your execution):
 | Accuracy vs epoch | Confusion matrix |
 |--|--|
 | ![accuracy_vs_epoch](./CIC_IDS2018/accuracy_vs_epoch.png) | ![confusion_matrix](./CIC_IDS2018/confusion_matrix.png) |
