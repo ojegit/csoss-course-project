@@ -70,6 +70,7 @@ def capture_pcap(interface, duration_sec, filename, verbose=0):
 
 #convert packet files to flows
 def convert_to_flow(input_filename, drop_columns=None, verbose=0):
+    input_filename = os.path.abspath(input_filename) #absolute paths
     command = ["cfm.bat", input_filename, os.path.dirname(input_filename)]
     result = subprocess.run(command, cwd=cfm_bat_cwd, capture_output=True, text=True, shell=True)
     if drop_columns is not None:
@@ -205,6 +206,7 @@ def main():
                     ts1 = datetime.datetime.now()
                     ts2 = int(ts1.timestamp() * 1000)
                     print(f"id: {j+i}, timestamp: {ts1}, label: {label}")
+                    log_file.write(f"{j+i},{ts2},{label}\n") # add to log
 
                 print(f"Cycle done in {time.time() - t_start:.2f} seconds\n{'-'*40}")
                 i += len(prediction)
