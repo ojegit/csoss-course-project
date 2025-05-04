@@ -3,4 +3,5 @@ __pycache__
 .ipynb_checkpoints
 *.csv
 Xy_test
+*.pcap
 depricated
