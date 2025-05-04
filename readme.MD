@@ -63,7 +63,7 @@ py -3.12 -m cd --test-input "[path to]/X_test.csv"
 ```
 
 ### Demos
-See ```./demos```
+Demos *notebook_demo.mkv* and *cli_demo.mkv* are at ```./demos``` compressed.
 
 ### Conclusion
 By combining machine learning with realistic flow-level network traffic, this project delivers a full pipeline—from training to real-world inference—for a basic IDS. The neural network achieves high accuracy on test data, and the CLI tool offers a practical interface for deploying the model on live or recorded traffic.

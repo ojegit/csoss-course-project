@@ -37,11 +37,6 @@ cfm_bat_cwd = None #CICFLowMeter-4.0 cfm.mat working folder i.e CICFlowMeter-4.0
 #columns that are dropped from the flow (.csv) file
 drop_flow_columns = ['Src Port', 'Src IP', 'Dst IP', 'Timestamp', 'Label', 'Flow ID', 'Flow Byts/s', 'Flow Pkts/s']
 
-model_path = r'C:\Users\VStore\Documents\Python\cyber_security_project\cli_tool\model_files\cic_ids2018_friday.keras'
-scaler_path = r'C:\Users\VStore\Documents\Python\cyber_security_project\cli_tool\model_files\scaler.pkl'
-dumpcap_exe = r'C:\Program Files\Wireshark\dumpcap.exe'
-cfm_bat_cwd = r"C:\Users\VStore\Documents\Python\cyber_security_project\CICFlowMeter-4.0\bin"
-
 
 ### FUNCTIONS
 
