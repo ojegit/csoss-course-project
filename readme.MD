@@ -1,6 +1,8 @@
-## Cyber Security of Software Systems - Course project
+## Cyber Security of Software Systems 
 
-### Intrusion Detection Using Neural Networks and Flow-Based Traffic Analysis
+<font size=4>Course project: *Intrusion Detection System*<br/>Group: *LPR*</font>
+
+### Introduction
 
 In this project, we explore the application of machine learning techniques—specifically a neural network—for detecting malicious activity in network traffic. The goal is to demonstrate how supervised learning can be used to distinguish between normal and intrusive behavior using flow-level network features.
 
@@ -21,8 +23,15 @@ Network traffic was captured using PCAP files, and over 80 flow-level features w
 
 While the full dataset used in training the model is approximately 7 GB, for this project we focused on a manageable subset to demonstrate how an intrusion detection system (IDS) might work in practice using machine learning.
 
+We have split this project into two parts. 
+
+[Part I](#part-i-training-a-neural-network) covers everything about training a machine learning model which in this case is a Neural Network on CSE-CIC-IDS2018 dataset in Google Colab. This part is likely platform independent in that the code can be easily adapter to both *Windows*, *Linux* and even *OSX*. 
+
+[Part II](#part-ii-command-line-interface-cli-tool) makes use of the model obtained from the first part presenting a command line interface (CLI) tool that can be used for detecting possible intrusions by assigning labels to incoming packets. The CLI tool is unfortunately *Windows* operating system exclusive at this point since both Wireshark and CICFlowMeter, the tool that is used to convert packets into useful features, use Windows.  
+
 ### Part I. Training a neural network
-The code for training a neural network for the purpose of intrusion detection in Colab see [notebook](./colab_train_detector.ipynb). This model only detects binary labels.
+
+The code for training a neural network for the purpose of intrusion detection in Google Colab see [notebook](./colab_train_detector.ipynb). This model only detects binary labels.
 Execution time for the notebook is about ~30 min. 
 
 The classification accuracy on test data is very impressive ~99.9%. The accuracy in terms of epochs and confusion matrix with respect to the test data are as follows (note: due to randomness the results may vary with your execution):
