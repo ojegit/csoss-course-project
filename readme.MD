@@ -1,9 +1,15 @@
 ## Cyber Security of Software Systems 
 
-<font size=4>Course project: *Intrusion Detection System*<br/>Group: *LPR*<br/>Programming language(s): *Python (Part I compatible with Google Colab, Part II tested with 3.12)*<br/>
-*Libraries:*<br/> 
-    <li>Part I: [Colab Notebook](./colab_train_detector.ipynb) has extensive list of required libraries, but there's no need to install anything locally</li>
-    <li>Part II: Tensorflow 2.18.0, Pandas 2.2.3, Numpy 2.0.2, Scikit-learn 1.6.1, Joblib 1.4.2</li></br> 
+Course project: *Intrusion Detection System*<br/>Group: *LPR*<br/>Programming language(s): *Python (Part I compatible with Google Colab, Part II tested with 3.12)*<br/>
+Libraries:<br/> 
+- Part I: [Colab Notebook](./colab_train_detector.ipynb) has extensive list of required libraries, but there's no need to install anything locally
+- Part II: [cd.py](./cd.py)
+    - tensorflow 2.18.0
+    - pandas 2.2.3
+    - numpy 2.0.2
+    - scikit-learn 1.6.1
+    - joblib 1.4.2
+
 </font>
 ### Introduction
 
