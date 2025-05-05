@@ -55,7 +55,7 @@ Two formats are offered for Keras model ```.h5``` and ```.keras```, however the 
 ### Part II. Command Line Interface (CLI) tool
 The Python file ```cd.py``` contains the command like interface runnable tool that can be used for capturing and categorizing traffic (i.e intrusion detection) as well as categorizing individual packet data and flow files. 
 
-Before operation setting paths to ```dumpcap.exe``` from [Wireshark](https://www.wireshark.org/) and location of ```cfm.bat``` from [CICFlowMeter](https://www.researchgate.net/publication/326991554_CICFlowmeter-V40_formerly_known_as_ISCXFlowMeter_is_a_network_traffic_Bi-flow_generator_and_analyser_for_anomaly_detection_httpsgithubcomISCXCICFlowMeter) is required. 
+Before operation setting paths for ```dumpcap.exe``` from [Wireshark](https://www.wireshark.org/) and working directory of ```cfm.bat``` from [CICFlowMeter](https://www.researchgate.net/publication/326991554_CICFlowmeter-V40_formerly_known_as_ISCXFlowMeter_is_a_network_traffic_Bi-flow_generator_and_analyser_for_anomaly_detection_httpsgithubcomISCXCICFlowMeter) as well as paths to model file obtained from Part I ```.keras``` and scaler ```.pkl``` are required on top of ```cd.py```. 
 
 One may also need to find out the interface id for the mandatory ```--interface``` flag. One way of finding out is to run 
 ```
