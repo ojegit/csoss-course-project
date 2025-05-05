@@ -9,8 +9,7 @@ Libraries:<br/>
     - numpy 2.0.2
     - scikit-learn 1.6.1
     - joblib 1.4.2
-
-</font>
+</br>
 ### Introduction
 
 In this project, we explore the application of machine learning techniques—specifically a neural network—for detecting malicious activity in network traffic. The goal is to demonstrate how supervised learning can be used to distinguish between normal and intrusive behavior using flow-level network features.
