@@ -1,7 +1,7 @@
 ## Cyber Security of Software Systems 
 
-Course project: *Intrusion Detection System*<br/>Group: *LPR*<br/>Programming language(s): *Python (Part I compatible with Google Colab, Part II tested with 3.12)*<br/>
-Libraries:<br/> 
+**Course project:** *Intrusion Detection System*<br/>Group: *LPR*<br/>**Programming language(s):** *Python (Part I compatible with Google Colab, Part II tested with 3.12)*<br/>
+**Libraries:**<br/> 
 - Part I: [Colab Notebook](./colab_train_detector.ipynb) has extensive list of required libraries, but there's no need to install anything locally
 - Part II: [cd.py](./cd.py)
     - tensorflow 2.18.0
@@ -9,7 +9,7 @@ Libraries:<br/>
     - numpy 2.0.2
     - scikit-learn 1.6.1
     - joblib 1.4.2
-</br>
+
 ### Introduction
 
 In this project, we explore the application of machine learning techniques—specifically a neural network—for detecting malicious activity in network traffic. The goal is to demonstrate how supervised learning can be used to distinguish between normal and intrusive behavior using flow-level network features.
