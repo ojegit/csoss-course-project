@@ -6,7 +6,7 @@
 
 In this project, we explore the application of machine learning techniques—specifically a neural network—for detecting malicious activity in network traffic. The goal is to demonstrate how supervised learning can be used to distinguish between normal and intrusive behavior using flow-level network features.
 
-To build and evaluate the model, we used a subset of the CSE-CIC-IDS2018 dataset [\[1\]], a comprehensive and realistic dataset created by the Canadian Institute for Cybersecurity (CIC) in collaboration with the Communications Security Establishment (CSE). The dataset was generated in a controlled testbed at the University of New Brunswick, simulating an enterprise network environment with:
+To build and evaluate the model, we used a subset of the CSE-CIC-IDS2018 dataset [\[1\]](#ref1), a comprehensive and realistic dataset created by the Canadian Institute for Cybersecurity (CIC) in collaboration with the Communications Security Establishment (CSE). The dataset was generated in a controlled testbed at the University of New Brunswick, simulating an enterprise network environment with:
 - 420 machines representing employees across five departments
 - 30 servers offering services like web, email, FTP, and DNS
 - An attacker infrastructure with 50 machines generating malicious traffic
