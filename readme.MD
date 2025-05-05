@@ -28,9 +28,9 @@ The data includes both benign and malicious network activity, covering a wide ra
 - Heartbleed exploit
 - Internal network infiltration
 
-The captured network traffic data was converted to 80 flow-level features with using CICFlowMeter-V3, a tool that computes statistics such as packet size, duration, flow direction, and protocol behavior. Each flow is labeled as benign or as a specific attack type, making the dataset ideal for both binary and multi-class classification. 
+The captured network traffic data was converted to 80 flow-level features with *CICFlowMeter-V3*, a tool that computes statistics such as packet size, duration, flow direction, and protocol behavior. Each flow is labeled as benign or as a specific attack type, making the dataset ideal for both binary and multi-class classification. 
 
-While the full dataset is approximately 7 GB, for this project we focused on a manageable subset to demonstrate how an intrusion detection system (IDS) might work in practice using machine learning. We also use only the binary classification to benign and attack instead of the full classification.
+While the full dataset is approximately 7 GB, for this project we focused on a manageable subset to demonstrate how an intrusion detection system (IDS) might work in practice using machine learning. We acknowledge that the more extensive dataset, and the more time spent on training would likely produce better results. We also use only the binary classification to benign and attack instead of the full classification.
 
 We have split this project into two parts. 
 
