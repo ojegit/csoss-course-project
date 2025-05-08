@@ -62,13 +62,37 @@ dumpcap.exe -D
 ```
 on its installation directory.
 
-**Example 1**: *Test everything works (paths set, tools installed etc.)*
+**Example 1**: *View available options*
+
+```cmd
+py -3.12 -m cd --help
+
+usage: cd.py [-h] [--interval INTERVAL] [--interface INTERFACE] [--log LOG] [--output-dir OUTPUT_DIR]
+             [--duration DURATION] [--dry-run] [--test-input TEST_INPUT]
+
+Network Intrusion Detection CLI Tool
+
+options:
+  -h, --help            show this help message and exit
+  --interval INTERVAL   Capture interval in seconds
+  --interface INTERFACE
+                        Network interface ID (from dumpcap.exe -D)
+  --log LOG             Path to the output log file
+  --output-dir OUTPUT_DIR
+                        Directory to save temporary files
+  --duration DURATION   How long to run (e.g., 30s, 5m, 2h, 1d)
+  --dry-run             Validate config and dependencies without running the main loop
+  --test-input TEST_INPUT
+                        Path to a pre-converted flow CSV or pcap file (test phase only)
+```
+
+**Example 2**: *Test everything works (paths set, tools installed etc.)*
 ```
 py -3.12 -m cd --dry-run
 ```
 Should there be a problem with any of the paths at ```cd.py``` then erros are produded.
 
-**Example 2**: *Capture traffic at 5 second intervals for 60 seconds*:
+**Example 3**: *Capture traffic at 5 second intervals for 60 seconds*:
 ```
 py -3.12 -m cd --duration 60s --interval 5 --interface [INTERFACE] --output-dir "./"
 ```
@@ -76,7 +100,7 @@ The time that it took between intervals as well as the id, timestamp and label s
 
 In addition to capturing a testbed of sorts is also included. The flag ```--test-input``` followed by a flow file extension with ```.csv``` e.g ```X_test.csv``` (from the [test file](./CIC_IDS2018/Xy_test.zip)) results in a lengthy output of some ~200k lines. Should the test file have ```.pcap``` extension it is first converted to a flow file and then predict is run.
 
-**Example 3**: *predict labels for X_test.csv flow file from the CIC_IDS2018 dataset*:
+**Example 4**: *predict labels for X_test.csv flow file from the CIC_IDS2018 dataset*:
 ```
 py -3.12 -m cd --test-input "[path to]/X_test.csv"
 ```
