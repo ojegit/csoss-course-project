@@ -4,5 +4,6 @@ __pycache__
 *.csv
 *.txt
 Xy_test
+demos
 *.pcap
 depricated
