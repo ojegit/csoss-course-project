@@ -1,0 +1,9 @@
+.git
+__pycache__
+.ipynb_checkpoints
+*.csv
+*.txt
+Xy_test
+demos
+*.pcap
+depricated
